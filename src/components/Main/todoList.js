@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TodoItem from './todoItem';
 
 export default class Main extends Component {
 
@@ -22,13 +23,15 @@ export default class Main extends Component {
 
   render() {
     return (
-
       <form onSubmit={this.handleSubmit}>
         <ul>
-          {this.state.todos.map(newTodo => <li key={newTodo}>
-            {newTodo}
-            <button onClick={() => this.handleDelete(newTodo)} type="Button">Remover</button>
-          </li>)}
+          {this.state.todos.map(newTodo => (
+            <TodoItem
+              key={newTodo}
+              newTodo={newTodo}
+              onDelete={() => this.handleDelete(newTodo)}
+            />
+          ))}
         </ul>
         <input type="text"
           onChange={this.handleChange}
