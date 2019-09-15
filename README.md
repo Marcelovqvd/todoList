@@ -1,9 +1,7 @@
 # TodoList
 
-Aplicação para estudo de ReactJS
+Aplicação para estudo de ReactJS.
+
+Mostrar na tela os ítens cadastrados.
 
 instalando React
-
-\$ yarn create react-app nomedoprojeto
-
-Deletar configurações eslintConfig do package.json para ser configuradas do zero.
