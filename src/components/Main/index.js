@@ -3,18 +3,21 @@ import React, { Component } from 'react';
 export default class Main extends Component {
 
   state = {
-    variavel: '',
-    variaveis: []
+    newTodo: '',
+    todos: []
   }
 
   handleChange = e => {
-    this.setState({ variavel: e.target.value })
+    this.setState({ newTodo: e.target.value })
   }
 
   handleSubmit = e => {
     e.preventDefault();
-    this.setState({ variaveis: [...this.state.variaveis, this.state.variavel], variavel: '' })
+    this.setState({ todos: [...this.state.todos, this.state.newTodo], newTodo: '' })
+  }
 
+  handleDelete = (newTodo) => {
+    this.setState({ todos: this.state.todos.filter(v => v !== newTodo) })
   }
 
   render() {
@@ -22,11 +25,14 @@ export default class Main extends Component {
 
       <form onSubmit={this.handleSubmit}>
         <ul>
-          {this.state.variaveis.map(variavel => <li key={variavel}>{variavel}</li>)}
+          {this.state.todos.map(newTodo => <li key={newTodo}>
+            {newTodo}
+            <button onClick={() => this.handleDelete(newTodo)} type="Button">Remover</button>
+          </li>)}
         </ul>
         <input type="text"
           onChange={this.handleChange}
-          value={this.state.variavel} />
+          value={this.state.newTodo} />
 
         <button type="submit">clique</button>
       </form>
